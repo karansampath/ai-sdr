@@ -1,7 +1,5 @@
 import streamlit as st
 import requests
-import json
-from datetime import datetime
 from typing import Dict, List, Optional
 
 # Configure the page
@@ -199,7 +197,7 @@ with st.sidebar:
             st.write(f"**{lead.get('name', 'Unknown')}**")
             st.write(f"🏢 {lead.get('company', 'No company')}")
             st.write(f"📊 Score: {lead.get('score', 0)}/100")
-            if st.button(f"Select", key=f"select_{lead.get('id')}"):
+            if st.button("Select", key=f"select_{lead.get('id')}"):
                 st.session_state.selected_lead_id = lead.get('id')
                 st.rerun()
             st.markdown("---")

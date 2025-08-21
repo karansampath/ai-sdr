@@ -1,10 +1,3 @@
-"""
-AI-SDR FastAPI Application
-
-A Grok-powered Sales Development Representative system for lead management
-and automated sales prospecting.
-"""
-
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
