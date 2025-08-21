@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  ai-sdr:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"  # FastAPI backend
+      - "8501:8501"  # Streamlit frontend
+    volumes:
+      - ./data:/app/data  # Persist DuckDB database
+    environment:
+      - XAI_API_KEY=${XAI_API_KEY:-}  # Set from host environment or .env file
+    env_file:
+      - .env  # Optional: load from .env file
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  data:
+    driver: local

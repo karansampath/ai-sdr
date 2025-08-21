@@ -144,7 +144,6 @@ async def root():
         "message": "AI-SDR API Server",
         "status": "running",
         "frontend_url": "http://localhost:8501",
-        "docs_url": "http://localhost:8000/docs"
     })
 
 
