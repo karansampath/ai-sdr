@@ -1,0 +1,34 @@
+Please qualify this lead and provide a structured analysis:
+
+Lead Information:
+- Name: {{ name }}
+- Email: {{ email }}
+- Company: {{ company or 'Not specified' }}
+- Job Title: {{ job_title or 'Not specified' }}
+- Industry: {{ industry or 'Not specified' }}
+- Company Size: {{ company_size or 'Not specified' }}
+- Website: {{ website or 'Not specified' }}
+{% if additional_context %}
+- Additional Context: {{ additional_context }}
+{% else %}
+- Additional Context: None provided
+{% endif %}
+
+{% if previous_interactions %}
+Previous Interactions:
+{% for interaction in previous_interactions %}
+- {{ interaction }}
+{% endfor %}
+{% endif %}
+
+{% if lead_source_context %}
+Lead Source Context:
+{{ lead_source_context }}
+{% endif %}
+
+Provide a comprehensive qualification with:
+1. A score from 0-100
+2. Detailed reasoning for the score
+3. Key factors that influenced your decision
+4. Recommended next steps
+5. Priority level (high/medium/low)

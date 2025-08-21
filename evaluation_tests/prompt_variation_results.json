@@ -1,0 +1,62 @@
+{
+  "aggressive": [
+    {
+      "lead": "Enterprise CTO - Big Corp",
+      "score": 95,
+      "priority": "high",
+      "reasoning": "This lead scores highly due to the CTO's position in a large technology company with explicit budget authority and interest in AI solutions. Revenue potential is substantial given the company size of ..."
+    },
+    {
+      "lead": "Startup Founder - Early Startup",
+      "score": 62,
+      "priority": "medium",
+      "reasoning": "The lead scores 62 based on the custom criteria. Revenue Potential is low due to the bootstrap nature and limited budget, indicating minimal immediate revenue opportunity (scored 20/100, weighted 40%)..."
+    },
+    {
+      "lead": "Mid-level Manager - Mid Corp",
+      "score": 45,
+      "priority": "low",
+      "reasoning": "The lead is an IT Manager at a mid-sized manufacturing company (200-500 employees) showing interest in automation, which aligns with potential revenue opportunities in this industry. However, as a mid..."
+    }
+  ],
+  "conservative": [
+    {
+      "lead": "Enterprise CTO - Big Corp",
+      "score": 92,
+      "priority": "high",
+      "reasoning": "This lead scores highly due to the prospect's senior position as CTO in a large technology company with over 5000 employees, indicating strong decision-making authority and budget approval. The intere..."
+    },
+    {
+      "lead": "Startup Founder - Early Startup",
+      "score": 57,
+      "priority": "medium",
+      "reasoning": "This lead is from an early-stage bootstrap startup with limited budget, which impacts immediate fit and market stability. However, the high growth potential in the technology industry suggests strong ..."
+    },
+    {
+      "lead": "Mid-level Manager - Mid Corp",
+      "score": 60,
+      "priority": "medium",
+      "reasoning": "The lead is an IT Manager at a mid-sized manufacturing company (200-500 employees) expressing interest in automation, which aligns potentially with our offerings. However, as a mid-level manager, they..."
+    }
+  ],
+  "balanced": [
+    {
+      "lead": "Enterprise CTO - Big Corp",
+      "score": 91,
+      "priority": "high",
+      "reasoning": "This lead scores highly due to excellent alignment across all criteria. The company is a large technology firm (5000+ employees), which fits perfectly with our target market for AI solutions. The cont..."
+    },
+    {
+      "lead": "Startup Founder - Early Startup",
+      "score": 65,
+      "priority": "medium",
+      "reasoning": "Based on the custom scoring criteria, this lead scores moderately due to strong contact quality and access to a key decision-maker (Founder & CEO), which aligns well with targeting influencers in tech..."
+    },
+    {
+      "lead": "Mid-level Manager - Mid Corp",
+      "score": 64,
+      "priority": "medium",
+      "reasoning": "The lead scores 64 out of 100 based on the custom criteria. Company Fit is moderate as the manufacturing industry with 200-500 employees aligns somewhat with automation solutions, but lack of website ..."
+    }
+  ]
+}

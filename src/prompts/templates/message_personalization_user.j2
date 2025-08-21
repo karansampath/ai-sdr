@@ -1,0 +1,48 @@
+Create personalized outreach messages for this prospect:
+
+Prospect Information:
+- Name: {{ lead_name }}
+- Email: {{ lead_email }}
+- Company: {{ company or 'Not specified' }}
+- Job Title: {{ job_title or 'Not specified' }}
+- Industry: {{ industry or 'Not specified' }}
+- Lead Source: {{ lead_source or 'Not specified' }}
+{% if previous_interactions %}
+- Previous Interactions: {{ previous_interactions | join('; ') }}
+{% endif %}
+
+Campaign Details:
+- Campaign Type: {{ campaign_type }}
+- Message Tone: {{ message_tone }}
+{% if campaign_context %}
+- Campaign Context: {{ campaign_context }}
+{% endif %}
+
+{% if company_research %}
+Company Research:
+{{ company_research }}
+{% endif %}
+
+{% if pain_points %}
+Identified Pain Points:
+{% for pain_point in pain_points %}
+- {{ pain_point }}
+{% endfor %}
+{% endif %}
+
+{% if value_propositions %}
+Relevant Value Propositions:
+{% for value_prop in value_propositions %}
+- {{ value_prop }}
+{% endfor %}
+{% endif %}
+
+Generate {{ variant_count or 2 }}-3 message variants with:
+1. Compelling subject lines optimized for opens
+2. Personalized body content with clear value proposition
+3. Appropriate call-to-action
+4. Effectiveness scoring (0-100)
+5. Best send time recommendations
+6. Follow-up strategy suggestions
+
+Focus on quality personalization using the available prospect data.

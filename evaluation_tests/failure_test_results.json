@@ -1,0 +1,68 @@
+{
+  "edge_cases": {
+    "edge_case_1": {
+      "status": "success",
+      "score": 10,
+      "priority": "low",
+      "reasoning_length": 583,
+      "factors_count": 5
+    },
+    "edge_case_2": {
+      "status": "success",
+      "score": 10,
+      "priority": "low",
+      "reasoning_length": 733,
+      "factors_count": 4
+    },
+    "edge_case_3": {
+      "status": "success",
+      "score": 5,
+      "priority": "low",
+      "reasoning_length": 599,
+      "factors_count": 5
+    },
+    "edge_case_4": {
+      "status": "success",
+      "score": 35,
+      "priority": "low",
+      "reasoning_length": 1244,
+      "factors_count": 5
+    },
+    "edge_case_5": {
+      "status": "success",
+      "score": 0,
+      "priority": "low",
+      "reasoning_length": 992,
+      "factors_count": 5
+    },
+    "edge_case_6": {
+      "status": "success",
+      "score": 10,
+      "priority": "low",
+      "reasoning_length": 942,
+      "factors_count": 4
+    }
+  },
+  "message_failures": {
+    "message_fail_1": {
+      "status": "unexpected_success",
+      "variant_count": 3,
+      "factors_count": 2
+    },
+    "message_fail_2": {
+      "status": "unexpected_success",
+      "variant_count": 3,
+      "factors_count": 3
+    },
+    "message_fail_3": {
+      "status": "unexpected_success",
+      "variant_count": 3,
+      "factors_count": 2
+    }
+  },
+  "rate_limiting": {
+    "successful": 10,
+    "rate_limited": 0,
+    "errors": 0
+  }
+}
