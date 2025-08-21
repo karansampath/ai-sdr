@@ -550,17 +550,17 @@ async def search_leads_endpoint(search_request: SearchRequest):
             offset=search_request.offset
         )
         
-        return JSONResponse({
+        return {
             "success": True,
             "data": {
-                "leads": [lead.model_dump() for lead in results],
+                "leads": results,  # Let FastAPI handle serialization automatically
                 "query": search_request.query,
                 "filters": search_request.filters,
                 "count": len(results),
                 "limit": search_request.limit,
                 "offset": search_request.offset
             }
-        })
+        }
         
     except Exception as e:
         logger.error(f"Error searching leads: {e}")

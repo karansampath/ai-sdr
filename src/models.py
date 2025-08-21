@@ -68,6 +68,9 @@ class Lead(LeadBase):
     
     class Config:
         from_attributes = True
+        json_encoders = {
+            datetime: lambda v: v.isoformat()
+        }
 
 
 class InteractionBase(BaseModel):
@@ -86,6 +89,9 @@ class Interaction(InteractionBase):
     
     class Config:
         from_attributes = True
+        json_encoders = {
+            datetime: lambda v: v.isoformat()
+        }
 
 
 class LeadWithInteractions(Lead):
@@ -175,6 +181,9 @@ class ScoringCriteria(ScoringCriteriaBase):
     
     class Config:
         from_attributes = True
+        json_encoders = {
+            datetime: lambda v: v.isoformat()
+        }
 
 
 class PipelineStageBase(BaseModel):
@@ -203,6 +212,9 @@ class PipelineStage(PipelineStageBase):
     
     class Config:
         from_attributes = True
+        json_encoders = {
+            datetime: lambda v: v.isoformat()
+        }
 
 
 class LeadPipelineHistoryBase(BaseModel):
@@ -223,6 +235,9 @@ class LeadPipelineHistory(LeadPipelineHistoryBase):
     
     class Config:
         from_attributes = True
+        json_encoders = {
+            datetime: lambda v: v.isoformat()
+        }
 
 
 class LeadWithPipeline(Lead):
