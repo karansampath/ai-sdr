@@ -35,11 +35,8 @@ class DatabaseManager:
     def _create_leads_table(self, conn):
         """Create the leads table."""
         conn.execute("""
-            CREATE SEQUENCE IF NOT EXISTS leads_id_seq
-        """)
-        conn.execute("""
             CREATE TABLE IF NOT EXISTS leads (
-                id INTEGER PRIMARY KEY DEFAULT nextval('leads_id_seq'),
+                id INTEGER PRIMARY KEY,
                 name VARCHAR NOT NULL,
                 email VARCHAR UNIQUE NOT NULL,
                 company VARCHAR,
@@ -57,11 +54,8 @@ class DatabaseManager:
     def _create_interactions_table(self, conn):
         """Create the interactions table for tracking lead communications."""
         conn.execute("""
-            CREATE SEQUENCE IF NOT EXISTS interactions_id_seq
-        """)
-        conn.execute("""
             CREATE TABLE IF NOT EXISTS interactions (
-                id INTEGER PRIMARY KEY DEFAULT nextval('interactions_id_seq'),
+                id INTEGER PRIMARY KEY,
                 lead_id INTEGER NOT NULL,
                 interaction_type VARCHAR NOT NULL,
                 content TEXT,
@@ -125,11 +119,8 @@ class DatabaseManager:
     def _create_scoring_criteria_table(self, conn):
         """Create table for custom scoring criteria."""
         conn.execute("""
-            CREATE SEQUENCE IF NOT EXISTS scoring_criteria_id_seq
-        """)
-        conn.execute("""
             CREATE TABLE IF NOT EXISTS scoring_criteria (
-                id INTEGER PRIMARY KEY DEFAULT nextval('scoring_criteria_id_seq'),
+                id INTEGER PRIMARY KEY,
                 name VARCHAR NOT NULL,
                 description TEXT,
                 weight INTEGER NOT NULL CHECK (weight > 0 AND weight <= 100),
@@ -142,11 +133,8 @@ class DatabaseManager:
     def _create_pipeline_stages_table(self, conn):
         """Create table for pipeline stages."""
         conn.execute("""
-            CREATE SEQUENCE IF NOT EXISTS pipeline_stages_id_seq
-        """)
-        conn.execute("""
             CREATE TABLE IF NOT EXISTS pipeline_stages (
-                id INTEGER PRIMARY KEY DEFAULT nextval('pipeline_stages_id_seq'),
+                id INTEGER PRIMARY KEY,
                 name VARCHAR NOT NULL UNIQUE,
                 description TEXT,
                 stage_order INTEGER NOT NULL,
@@ -160,11 +148,8 @@ class DatabaseManager:
     def _create_lead_pipeline_history_table(self, conn):
         """Create table to track lead progression through pipeline."""
         conn.execute("""
-            CREATE SEQUENCE IF NOT EXISTS lead_pipeline_history_id_seq
-        """)
-        conn.execute("""
             CREATE TABLE IF NOT EXISTS lead_pipeline_history (
-                id INTEGER PRIMARY KEY DEFAULT nextval('lead_pipeline_history_id_seq'),
+                id INTEGER PRIMARY KEY,
                 lead_id INTEGER NOT NULL,
                 stage_id INTEGER NOT NULL,
                 previous_stage_id INTEGER,

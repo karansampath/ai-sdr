@@ -5,9 +5,9 @@ A Grok-powered Sales Development Representative system for lead management
 and automated sales prospecting.
 """
 
-from fastapi import FastAPI, Request, HTTPException
-from fastapi.templating import Jinja2Templates
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from typing import Optional
 import logging
 import sys
@@ -43,8 +43,14 @@ app = FastAPI(
     version="0.1.0"
 )
 
-# Initialize templates
-templates = Jinja2Templates(directory="templates")
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:8501"],  # Streamlit frontend
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 def get_leads_from_db() -> list[Lead]:
@@ -131,41 +137,29 @@ def get_lead_by_id(lead_id: int) -> LeadWithInteractions:
         return LeadWithInteractions(**lead.model_dump(), interactions=interactions)
 
 
-@app.get("/", response_class=HTMLResponse)
-async def index(request: Request):
-    """Render the main dashboard with all leads."""
-    try:
-        leads = get_leads_from_db()
-        return templates.TemplateResponse("index.html", {
-            "request": request,
-            "leads": leads
-        })
-    except Exception as e:
-        logger.error(f"Error fetching leads: {e}")
-        return templates.TemplateResponse("index.html", {
-            "request": request,
-            "leads": [],
-            "error": "Failed to load leads"
-        })
-
-
-@app.get("/leads/{lead_id}", response_class=HTMLResponse)
-async def lead_detail(request: Request, lead_id: int):
-    """Render detailed view of a specific lead."""
-    try:
-        lead = get_lead_by_id(lead_id)
-        return templates.TemplateResponse("lead_detail.html", {
-            "request": request,
-            "lead": lead
-        })
-    except HTTPException:
-        raise
-    except Exception as e:
-        logger.error(f"Error fetching lead {lead_id}: {e}")
-        raise HTTPException(status_code=500, detail="Internal server error")
+@app.get("/")
+async def root():
+    """Root endpoint - redirect users to Streamlit frontend."""
+    return JSONResponse({
+        "message": "AI-SDR API Server",
+        "status": "running",
+        "frontend_url": "http://localhost:8501",
+        "docs_url": "http://localhost:8000/docs"
+    })
 
 
 # API Endpoints for Lead Management
+
+@app.get("/api/leads", response_model=list[Lead])
+async def get_all_leads():
+    """Get all leads from the database."""
+    try:
+        leads = get_leads_from_db()
+        return leads
+    except Exception as e:
+        logger.error(f"Error fetching leads: {e}")
+        raise HTTPException(status_code=500, detail="Failed to fetch leads")
+
 
 @app.post("/api/leads", response_model=Lead)
 async def create_lead(lead: LeadCreate):
